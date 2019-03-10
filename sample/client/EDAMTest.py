@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 #
 # A simple Evernote API demo script that lists all notebooks in the user's
 # account and creates a simple test note in the default notebook.
@@ -33,9 +35,9 @@ from evernote.api.client import EvernoteClient
 auth_token = "your developer token"
 
 if auth_token == "your developer token":
-    print "Please fill in your developer token"
-    print "To get a developer token, visit " \
-        "https://sandbox.evernote.com/api/DeveloperToken.action"
+    print("Please fill in your developer token")
+    print("To get a developer token, visit " \
+        "https://sandbox.evernote.com/api/DeveloperToken.action")
     exit(1)
 
 
@@ -58,8 +60,8 @@ version_ok = user_store.checkVersion(
     UserStoreConstants.EDAM_VERSION_MAJOR,
     UserStoreConstants.EDAM_VERSION_MINOR
 )
-print "Is my Evernote API version up to date? ", str(version_ok)
-print ""
+print("Is my Evernote API version up to date? ", str(version_ok))
+print("")
 if not version_ok:
     exit(1)
 
@@ -67,13 +69,13 @@ note_store = client.get_note_store()
 
 # List all of the notebooks in the user's account
 notebooks = note_store.listNotebooks()
-print "Found ", len(notebooks), " notebooks:"
+print("Found ", len(notebooks), " notebooks:")
 for notebook in notebooks:
-    print "  * ", notebook.name
+    print("  * ", notebook.name)
 
-print
-print "Creating a new note in the default notebook"
-print
+print()
+print("Creating a new note in the default notebook")
+print()
 
 # To create a new note, simply create a new Note object and fill in
 # attributes such as the note's title.
@@ -121,4 +123,4 @@ note.content += '</en-note>'
 # attributes such as the new note's unique GUID.
 created_note = note_store.createNote(note)
 
-print "Successfully created a new note with GUID: ", created_note.guid
+print("Successfully created a new note with GUID: ", created_note.guid)

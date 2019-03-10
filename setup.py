@@ -18,8 +18,9 @@ setup(
     url='http://dev.evernote.com',
     description='Evernote SDK for Python',
     long_description=read('README.md'),
-    packages=find_packages('lib'),
-    packages=find_packages('lib',exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
+    package_dir={'': 'lib'},
+    packages=find_packages(where='lib',
+                           exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

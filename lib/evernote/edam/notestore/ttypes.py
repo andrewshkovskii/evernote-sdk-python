@@ -1192,7 +1192,9 @@ class NoteFilter(object):
             oprot.writeFieldEnd()
         if self.words is not None:
             oprot.writeFieldBegin('words', TType.STRING, 3)
-            oprot.writeString(self.words.encode('utf-8') if sys.version_info[0] == 2 else self.words)
+            if isinstance(self.words, bytes):
+                self.words = self.words.decode('utf-8')
+            oprot.writeString(self.words)
             oprot.writeFieldEnd()
         if self.notebookGuid is not None:
             oprot.writeFieldBegin('notebookGuid', TType.STRING, 4)
